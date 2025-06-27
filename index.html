@@ -100,6 +100,17 @@
         .wechat-promotion.hidden {
             transform: translateY(100%);
         }
+        
+        /* 打印样式：隐藏引流提示 */
+        @media print {
+            .wechat-promotion {
+                display: none !important;
+            }
+            
+            body {
+                padding-bottom: 0 !important;
+            }
+        }
     </style>
 </head>
 
@@ -167,11 +178,7 @@
         document.getElementById('closePromotion').addEventListener('click', function() {
             const promotion = document.getElementById('wechatPromotion');
             promotion.classList.add('hidden');
-            
-            // 移除localStorage相关代码，使刷新后重新显示
         });
-        
-        // 页面加载时检查用户是否已关闭过提示 - 移除相关代码
         
         // 滚动时的交互优化
         let lastScrollTop = 0;
@@ -183,13 +190,29 @@
             if (scrollTop > lastScrollTop && scrollTop > 200) {
                 promotion.classList.add('hidden');
             } else {
-                // 移除localStorage检查，始终显示
                 promotion.classList.remove('hidden');
             }
             lastScrollTop = scrollTop;
+        });
+        
+        // 打印按钮点击事件
+        document.getElementById('printAnswers').addEventListener('click', function() {
+            // 隐藏引流提示
+            document.getElementById('wechatPromotion').classList.add('hidden');
+            
+            // 延迟打印，确保DOM更新完成
+            setTimeout(() => {
+                window.print();
+                
+                // 打印完成后恢复显示（如果用户没有主动关闭）
+                if (!localStorage.getItem('wechatPromotionHidden')) {
+                    setTimeout(() => {
+                        document.getElementById('wechatPromotion').classList.remove('hidden');
+                    }, 500);
+                }
+            }, 100);
         });
     </script>
 </body>
 
 </html>
-    
