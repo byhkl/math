@@ -1,0 +1,134 @@
+    /* 通用样式 */
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f8f9fa;
+    }
+
+   .container {
+        max-width: 960px;
+        margin: 3rem auto;
+        padding: 2rem;
+        background-color: #ffffff;
+        border-radius: 0.5rem;
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+        text-align: center;
+        margin-bottom: 2rem;
+        color: #343a40;
+    }
+
+    /* 表单样式 */
+   .form-row {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+        margin-bottom: 2rem;
+    }
+
+   .form-row > div {
+        flex: 1 1 200px;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 500;
+    }
+
+    select,
+    input[type="number"] {
+        width: 100%;
+        border: 1px solid #ced4da;
+        border-radius: 0.25rem;
+    }
+
+    /* 按钮样式 */
+   .button-group {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin-bottom: 2rem;
+    }
+
+   .button-group button,
+   .button-group input[type="submit"] {
+        padding: 0.5rem 1rem;
+        border: none;
+        border-radius: 0.25rem;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+   .button-group input[type="submit"] {
+        background-color: #007bff;
+        color: white;
+    }
+
+   .button-group input[type="submit"]:hover {
+        background-color: #0056b3;
+    }
+
+   .button-group #showAnswersBtn {
+        background-color: #17a2b8;
+        color: white;
+    }
+
+   .button-group #showAnswersBtn:hover {
+        background-color: #117a8b;
+    }
+
+   .button-group #printAnswers {
+        background-color: #6c757d;
+        color: white;
+    }
+
+   .button-group #printAnswers:hover {
+        background-color: #5a6268;
+    }
+    
+    /* 题目样式 */
+    .math-problem {
+        border: 1px solid #ccc;
+        padding: 1rem;
+        box-sizing: border-box;
+        border-radius: 0.25rem;
+    }
+    
+    /* 包裹题目元素的容器样式 */
+    #mathProblems {
+        display: flex;
+        flex-wrap: wrap;
+        margin: -0.5rem; /* 负边距用于抵消最外侧题目元素的外边距 */
+    }
+    
+    /* 电脑版一行显示三个题目 */
+    @media (min-width: 768px) {
+        .math-problem {
+            width: calc(33.3333% - 1rem); /* 每个元素宽度减去左右外边距总和 */
+            margin: 0.5rem;
+        }
+    }
+    
+    /* 手机版一行显示两个题目 */
+    @media (max-width: 767px) {
+        .math-problem {
+            width: calc(50% - 1rem); /* 每个元素宽度减去左右外边距总和 */
+            margin: 0.5rem;
+        }
+    }
+    
+    .answer {
+        display: none;
+        color: green;
+        margin-top: 0.5rem;
+    }
+    
+    /* 清除浮动 */
+    .clearfix::after {
+        content: "";
+        clear: both;
+        display: table;
+    }
